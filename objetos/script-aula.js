@@ -1,4 +1,4 @@
-//OBJETOS SINTAXE
+//OBJETOS SINTAXE {} chave e valor;
 var pessoa = {
   nome: 'Felipe',
   idade: 19,
@@ -7,7 +7,7 @@ var pessoa = {
 }
 console.log(pessoa.nome, pessoa.idade);
 
-//MÉTODOS
+//MÉTODOS //Abreviação de area: function() {}para area() {}, no ES6+
 var quadrado = {
   lados: 4,
   area(lado){
