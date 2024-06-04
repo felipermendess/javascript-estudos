@@ -18,11 +18,11 @@ var conta4 = 2 ** 5;
 var conta5 = 14 % 2;
 
 //Operadores Aritméticos (Strings)
-var conta6 = '100' + 50;
-var conta7 = '100' - 20;
-var conta8 = '100' * '2';
+var conta6 = '100' + 50;// 10050
+var conta7 = '100' - 20;// 50
+var conta8 = '100' * '2';// 200
 
-//Nan (Not a number)
+//Nan (Not a number) = Não é um número!
 var conta9 = 'isso é 19' * 20;
 console.log(isNaN(conta9));
 
@@ -34,25 +34,23 @@ var total4 = 10 + 10 * 2 + 20 / 2;
 
 //Operadores Aritméticos Unários (Incremento e Decremento)
 var incremento = 5;
-// console.log(incremento++);//Depois
-console.log(++incremento);//Antes
-console.log(incremento);
-
-var decremento = 4;
-// console.log(decremento--);//Depois
-console.log(--decremento);//Antes
-console.log(decremento);
+console.log(incremento++); // 5
+console.log(incremento); // 6
+var incremento2 = 5;
+console.log(++incremento2); // 6
+console.log(incremento2); // 6
+//Mesma coisa para o decréscimo--x
 
 //Outra forma de tipo unário (+ e - => tentam transformar o valor seguinte em número)
 //Nan
-var frase = 'teste';
-console.log(+frase);
-console.log(-frase);
+var frase = 'Isso é um teste';
++frase; // NaN
+-frase; // NaN
 
-var anos = '19';
-console.log(+anos);//19
-console.log(-anos);//-19
+var idade = '28';
++idade; // 28 (número)
+-idade; // -28 (número)
+console.log(+idade + 5); // 33 
 
-var escola = true;
-console.log(+escola);//1
-console.log(-escola);//-1
+var possuiFaculdade = true;
+console.log(+possuiFaculdade); // 1

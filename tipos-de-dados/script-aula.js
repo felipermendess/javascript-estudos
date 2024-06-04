@@ -9,7 +9,6 @@ var novoObjeto = {}; //Object
 
 //Typeof = Verifica o tipo de dado
 console.log(typeof homem);
-
 //PS.: NULL = OBJECT
 console.log(typeof comida);
 
