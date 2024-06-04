@@ -22,3 +22,19 @@ while(index <= 10){
   console.log(index);
   index++;
 }
+
+//For loop é mais comum.
+//Break
+for(var i = 0; i < videoGames.length; i++){
+  console.log(videoGames[i]);
+  if(videoGames[i] === 'Xbox'){
+    break;//irá parar o loop caso encontre.
+  }
+}
+
+//ForEach - forEach é um método que executa uma função para cada item da Array. É uma forma mais simples de utilizarmos um loop com arrays (ou array-like).
+var frutas = ['Maçã','Banana','Pera','Uva'];
+frutas.forEach(function(fruta){
+  console.log(fruta);
+})
+//Podemos passar os seguintes parâmetros item, index e array.
