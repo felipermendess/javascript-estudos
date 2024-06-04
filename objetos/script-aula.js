@@ -1,4 +1,4 @@
-//OBJETOS SINTAXE {} chave e valor;
+//OBJETOS - Conjunto de variáveis ​​e funções, que são chamadas de propriedades e métodos. SINTAXE {} chave e valor;
 var pessoa = {
   nome: 'Felipe',
   idade: 19,
@@ -7,7 +7,7 @@ var pessoa = {
 }
 console.log(pessoa.nome, pessoa.idade);
 
-//MÉTODOS //Abreviação de area: function() {}para area() {}, no ES6+
+//MÉTODOS - É uma propriedade que possui uma função no local do seu valor. //Abreviação de area: function() {}para area() {}, no ES6+
 var quadrado = {
   lados: 4,
   area(lado){
@@ -16,7 +16,7 @@ var quadrado = {
 }
 console.log(quadrado.area(5));
 
-//THIS - Referência ao objeto em si
+//THIS - Referência ao objeto em si.
 var perimetro = {
   lados: 4,
   perimetroFunction(lado){
@@ -62,7 +62,7 @@ menu.position = 'fixed';
 var height = 120;
 var menu = {
   width: 800,
-  height: 50,
+  height: 50,//this
   metadeHeight() {
     return this.height / 2;
   }
