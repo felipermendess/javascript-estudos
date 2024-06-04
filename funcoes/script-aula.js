@@ -1,10 +1,10 @@
-//Função Sintaxe -> Obrigatório parênteses para executar uma função!
+//Função Sintaxe -> Obrigatório parênteses para executar uma função! Bloco de código que pode ser executado e reutilizado. Valores podem ser passados ​​por uma função e a mesma retorna outro valor.
 function areaDoQuadrado(lado){
   return lado * lado;
 }
 console.log(areaDoQuadrado(3));
 
-//Parâmetros e Argumentos
+//Parâmetros e Argumentos - Ao criar uma função, você pode definir parâmetros, Ao executaruma função, você pode passar argumentos.
 function imc(peso,altura){ 
   return peso / (altura * altura);
 } // Peso e altura são os parâmetros
@@ -16,7 +16,7 @@ function mostrarMsgNoConsole(){
 }
 addEventListener('click', mostrarMsgNoConsole); // Argumentos sendo funções
 
-//Função Anônima => Função sem denominação
+//Função Anônima => Função sem denominação - Funções anônimas são aquelas em que o nome da função não está definido, escritas como function() {}ou() => {}
 
 //Não é obrigatório passar um parâmetro ou argumento
 function corFavorita(cor){
@@ -30,20 +30,14 @@ function corFavorita(cor){
 }
 corFavorita();//Cor não encontrada
 
-//Função sem return = undefined
-
-// function semRetorno(peso,altura){
-//   var imc = peso / (altura ** 2);
-//   console.log(imc);
-// }
-// console.log(semRetorno(70, 1.76));
-
-function imc2(peso, altura) {
+//Função PODE OU NÃO RETORNAR UM VALOR!
+//Quando não definimos o return, ela irá retornar undefined. O código interno da função é executado normalmente, independente de haver valor de retorno ou não
+function imc(peso, altura) {
   const imc = peso / (altura ** 2);
   console.log(imc);
 }
-imc2(80, 1.80); // retorna o imc
-console.log(imc2(80, 1.80)); // retorna o imc e undefined
+imc(80, 1.80); // retorna o imc
+console.log(imc(80, 1.80)); // retorna o imc e undefined
 
 //Valores retornados -> Uma função pode retornar qualquer tipo de dado e até outras funções.
 function terceiraIdade(idade) {
@@ -76,13 +70,11 @@ function dados() {
   }
   return outrosDados();
 }
- 
 dados(); // Retorna 'André, 29, Rio de Janeiro, Designer'
 outrosDados(); // retorna um erro
 
 //Hoisting -> Antes de executar uma função, o JS 'move' todas as funções declaradas para a memória
 imc(80, 1.80); // imc aparece no console
-
 function imc(peso, altura) {//Hoisting 
   const imc = peso / (altura ** 2);
   console.log(imc);

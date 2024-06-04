@@ -70,7 +70,7 @@ false || true; // true
 'Gato' || false; // Gato
 (5 >= 5) || (3 < 6); // true
 
-//Switch
+//Switch - Como switch você pode verificar se uma variável é igual a valores diferentes usando o case. Caso ela seja igual, você pode fazer alguma coisa e usar a palavra chave break; para cancelar a continuação. O valor de inadimplência ocorrerá caso nenhuma das anteriores seja verdadeira.
 var diaDaSemana = '4';
 switch(diaDaSemana){
   case '1':
