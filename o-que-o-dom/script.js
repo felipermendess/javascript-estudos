@@ -4,10 +4,12 @@ console.log(url);
 
 // Seleciona o primeiro elemento da página que
 // possua a classe ativo
-const primeiroElemento = document.querySelector('.ativo')
+const elementoAtivo = document.querySelector('.ativo');
 
 // Retorne a linguagem do navegador
-console.log(navigator.language);
+const linguagemDoBrowser = navigator.language;
+console.log(linguagemDoBrowser);
 
 // Retorne a largura da janela 
-console.log(window.innerWidth);
+const larguraDaJanela = innerWidth;
+console.log(larguraDaJanela);

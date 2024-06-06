@@ -5,21 +5,23 @@ console.log(window);
 window.innerHeight; // retorna a altura do browser
 
 //Window e Document - São os objetos principais do DOM, boa parte da manipulação é feita através dos seus métodos e propriedades.
-window.alert('Isso é um alerta');
+//window.alert('Isso é um alerta');
 //alert('Isso é um alerta'); // Funciona
 console.log(window.location);
 console.log(window.location.href);
 
-document.querySelector('h1'); // Seleciona o primeiro h1
+const h1Selecionado = document.querySelector('h1'); // Seleciona o primeiro h1
 document.body; // Retorna o body
+
+//Element propriedades
+console.log(h1Selecionado.classList);
+console.log(h1Selecionado.classList[0]);//Verifica a primeira classe
 
 //Node - Toda tag html é representada pelo objeto Element e por isso herda os seus métodos e propriedades. Element é um tipo de objeto Node.
 const titulo = document.querySelector('h1');
-
 titulo.innerText; // retorna o texto;
 titulo.classList; // retorna as classes;
 titulo.id; // retorna o id;
 titulo.offsetHeight; // retorna a altura do elemento;
+titulo.addEventListener('click', callback); // ativa a função callback ao click no titulo
 
-titulo.addEventListener('click', callback);
-// ativa a função callback ao click no titulo
