@@ -17,3 +17,4 @@ console.log(primeiroH2);
 // Selecione o último p do site
 const ultimoParagrafo = document.querySelectorAll('p');
 console.log(ultimoParagrafo[ultimoParagrafo.length - 1]);
+//macete: selecionar todos os p's, e após isso diminuir o array dele por -1 para achar o último valor.
