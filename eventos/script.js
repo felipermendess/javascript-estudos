@@ -37,10 +37,9 @@ elementos.forEach(elemento => {
 
 
 // Se o usuário clicar na tecla (t), aumente todo o texto do site. 
-const body = document.body;
 
 window.addEventListener('keydown', (e) => {
   if(e.key === 't'){
-    body.style.fontSize = '28px';
+    document.documentElement.classList.toggle('texto-maior')
   }
 })
