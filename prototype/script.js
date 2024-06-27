@@ -2,23 +2,21 @@
 // Deve conter nome, sobrenome e idade
 // Crie um método no protótipo que retorne
 // o nome completo da pessoa
-
-function Pessoas(nome,sobrenome,idade){
+function Pessoa(nome,sobrenome,idade){
   this.nome = nome;
   this.sobrenome = sobrenome;
   this.idade = idade;
 }
 
-Pessoas.prototype.nomeCompleto = function(){
+Pessoa.prototype.nomeCompleto = function(){
   return this.nome + ' ' + this.sobrenome;
 }
 
-const felipe = new Pessoas('Felipe','Rodrigues Mendes Valente',19);
+const felipe = new Pessoa('Felipe','Rodrigues Mendes Valente',19);
 
 // Liste os métodos acessados por 
 // dados criados com NodeList,
 // HTMLCollection, Document
-
 Object.getOwnPropertyNames(NodeList.prototype);
 Object.getOwnPropertyNames(HTMLCollection.prototype);
 Object.getOwnPropertyNames(Document.prototype);
@@ -26,7 +24,7 @@ Object.getOwnPropertyNames(Document.prototype);
 // Liste os construtores dos dados abaixo
 const li = document.querySelector('li');
 
-li;//HtmlliElement
+li;//HTMLLIElement
 li.click;//Function
 li.innerText;//String
 li.value;//Number
