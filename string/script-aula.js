@@ -78,3 +78,38 @@ listaPrecos.forEach((preco) => {
 listaPrecos[0].padStart(10, '.'); // .....R$ 99
 listaPrecos[0].padEnd(10, '.');   // R$ 99.....
 
+//Repeat - Repete a string (n) vezes.
+const frase2 = 'Ta';
+
+frase2.repeat(5); // TaTaTaTaTa
+
+//Replace(regexp|substr, newstr|function) - Troca parte da string por outra. Podemos utilizar uma regular expression ou um valor direto. Se usarmos um valor direto ele irá trocar apenas o primeiro valor que encontrar.
+
+let listaItens = 'Camisas Bonés Calças Bermudas Vestidos Saias';
+listaItens = listaItens.replace(/[ ]+/g, ', ');
+
+let preco = 'R$ 1200,43';
+preco = preco.replace(',', '.'); // 'R$ 1200.43'
+
+//Split - Divide a string de acordo com o padrão passado e retorna uma array.
+const listItens = 'Camisas Bonés Calças Bermudas Vestidos Saias';
+const arrayItens = listItens.split(' ');
+
+const htmlText = '<div>O melhor item</div><div>A melhor lista</div>';
+const htmlArray = htmlText.split('div');
+const htmlNovo = htmlArray.join('section');
+
+//TolowerCase e ToUpperCase - Retorna a string em letras maiúsculas ou minúsculas. Bom para verificarmos input de usuários.
+const sexo1 = 'Feminino';
+const sexo2 = 'feminino';
+const sexo3 = 'FEMININO';
+
+(sexo1.toLowerCase() === 'feminino'); // true
+(sexo2.toLowerCase() === 'feminino'); // true
+(sexo3.toLowerCase() === 'feminino'); // true
+
+//Trim, TrimStart, TrimEnd - Remove espaço em branco do início ou final de uma string.
+const valor = '  R$ 23.00   ' 
+valor.trim(); // 'R$ 23.00'
+valor.trimStart(); // 'R$ 23.00   '
+valor.trimEnd(); // '  R$ 23.00'
