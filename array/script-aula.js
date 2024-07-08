@@ -139,4 +139,4 @@ const linguagens2 = ['html', 'css', 'js', 'php', 'python'];
 linguagens2.slice(3); // ['php', 'python']
 linguagens2.slice(1, 4); // ['css', 'js', 'php']
 
-const cloneLinguagens = linguagens2.slice();
+const cloneLinguagens = linguagens2.slice();;//clonagem
