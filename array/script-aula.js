@@ -185,7 +185,6 @@ frutasRight; // Uva Pêra Banana
 frutasLeft; // Banana Pêra Uva
 
 //Some - [].some(), se pelo menos um return da iteração for truthy, ele retorna true.
-
 const fritas1 = ['Banana', 'Pêra', 'Uva'];
 const temUva = fritas1.some((fruta) => {
   return fruta === 'Uva';
@@ -207,3 +206,46 @@ const arraysCheias = frutas2.every((fruta) => {
 
 const numeros1 = [6, 43, 22, 88, 101, 29];
 const maiorQue3 = numeros1.every(x => x > 3); // true
+
+//Find e FindIndex - [].find(), retorna o valor atual da primeira iteração que retornar um valor truthy. Já o [].findIndex(), ao invés de retornar o valor, retorna o index deste valor na array.
+const frutas1 = ['Banana', 'Pêra', 'Uva', 'Maçã'];
+const buscaUva = frutas1.findIndex((fruta) => {
+  return fruta === 'Uva'; 
+}); // 2
+
+const numeros3 = [6, 43, 22, 88, 101, 29];
+const buscaMaior45 = numeros3.find(x => x > 45); // 88
+
+//Filter - [].filter(), retorna uma array com a lista de valores que durante a sua iteração retornaram um valor truthy.
+const frutas3 = ['Banana', undefined, null, '', 'Uva', 0, 'Maçã'];
+const arrayLimpa = frutas3.filter((fruta) => {
+  return fruta; 
+}); // ['Banana', 'Uva', 'Maçã']
+
+const numeros4 = [6, 43, 22, 88, 101, 29];
+const maior45 = numeros4.filter(x => x > 45); // [88, 101]
+
+//Filter em objetos 
+const aulas3 = [
+  {
+    nome: 'HTML 1',
+    min: 15
+  },
+  {
+    nome: 'HTML 2',
+    min: 10
+  },
+  {
+    nome: 'CSS 1',
+    min: 20
+  },
+  {
+    nome: 'JS 1',
+    min: 25
+  },
+]
+
+const aulasMaiores = aulas3.filter((aula) => { 
+  return aula.min > 15;
+});
+// [{nome: 'CSS 1', min: 20}, {nome: 'JS 1', min: 25}]
