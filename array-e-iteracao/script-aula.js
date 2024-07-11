@@ -1,142 +1,251 @@
-//Arrays - Arrays armazenam uma coleção de elementos. Estes podem ser strings, arrays, boolean, number, functions, objects e mais.
-const instrumentos = ['Guitarra', 'Baixo', 'Violão'];
-const precos = [49, 99, 69, 89];
+//ForEach - [].forEach(callback(itemAtual, index, array)) a função de callback é executada para cada item da array. Ela possui três argumentos, itemAtual (valor do item da array), index (index do valor na array) e array (array original).
+const carros = ['Ford', 'Fiat', 'Honda'];
+carros.forEach(function(item, index, array) {
+  console.log(item.toUpperCase());
+});
 
-const dados = [new String('Tipo 1'), ['Carro', 'Portas', {cor: 'Azul', preco: 2000}], function andar(nome) { console.log(nome) }];
+// com Arrow Function
+carros.forEach((item, index, array) => {
+  console.log(item.toUpperCase());
+});
+//O método sempre retorna undefined
 
-dados[2]('Ford');
-dados[1][2].cor; // azul
+//Arrow Function 
+const li = document.querySelectorAll('li');
 
-//Construção de arrays - Toda array herda os métodos e propriedades do protótipo do construtor Array.
-const instrumentos2 = ['Guitarra', 'Baixo', 'Violão'];
-const carros = new Array('Corola', 'Mustang', 'Honda');
+li.forEach(i => i.classList.add('ativa'));
 
-carros[1] // Mustang
-carros[2] = 'Ferrari';
-carros[10] = 'Parati';
-carros.length; // 11
+li.forEach(function(item) {
+  item.classList.add('ativa');
+});
 
-//Array.from - let li = document.querySelectorAll('li'); // NodeList
-li = Array.from(li); // Array
+//Modificar array original - O terceiro argumento do callback é uma referência direta e se modificado irá também modificar a array original.
+const carros1 = ['Ford', 'Fiat', 'Honda'];
+carros1.forEach((item, index, array) => {
+  array[index] = 'Carro ' + item;
+});
 
-const carros = {
-  0: 'Fiat',
-  1: 'Honda',
-  2: 'Ford',
-  length: 4,
+carros1; // ['Carro Ford', 'Carro Fiat', 'Carro Honda']
+
+//Map - [].map(callback(itemAtual, index, array)) funciona da mesma forma que o forEach(), porém ao invés de retornar undefined, retorna uma nova array com valores atualizados de acordo com o return de cada iteração.
+const carros2 = ['Ford', 'Fiat', 'Honda'];
+const newCarros = carros2.map((item) => {
+  return 'Carro ' + item;
+});
+
+carros2; // ['Ford', 'Fiat', 'Honda']
+newCarros; // ['Carro Ford', 'Carro Fiat', 'Carro Honda']; 
+
+//Valor Retornado - Se não retornarmos nenhum valor durante a iteração utilizando map, o valor retornado como de qualquer função que não possui o return, será undefined.
+const carros3 = ['Ford', 'Fiat', 'Honda'];
+const novosCarros = carros3.map((item) => {
+  const novoValor = 'Carro ' + item;
+});
+
+novosCarros; // [undefined, undefined, undefined];
+
+//Arrow Function e Map - Uma Arrow Function de linha única e sem chaves irá retornar o valor após a fat arrow =>.
+const numeros = [2, 4, 6, 8, 10, 12, 14];
+const numerosX3 = numeros.map(n => n * 3);
+
+numerosX3; // [6, 12, 18, 24, 30, 36, 42];
+
+//Map com Objetos - Map pode ser muito útil para interagirmos com uma array de objetos, onde desejamos isolar um valor único de cada objeto.
+const aulas = [
+  {
+    nome: 'HTML 1',
+    min: 15
+  },
+  {
+    nome: 'HTML 2',
+    min: 10
+  },
+  {
+    nome: 'CSS 1',
+    min: 20
+  },
+  {
+    nome: 'JS 1',
+    min: 25
+  },
+]
+
+const tempoAulas = aulas.map(aula => aula.min);
+// [15, 10, 20, 25];
+
+const puxarNomes = aula => aula.nome;
+const nomesAulas = aulas.map(puxarNomes);
+// ['HTML 1', 'HTML 2', 'CSS 1', 'JS 1']
+
+//Reduce - [].reduce(callback(acumulador, valorAtual, index, array), valorInicial) executa a função de callback para cada item da Array. Um valor especial existe nessa função de callback, ele é chamado de acumulador, mas é na verdade apenas o retorno da iteração anterior.
+const aulas1 = [10, 25, 30];
+const total1 = aulas1.reduce((acumulador, atual) => {
+  return acumulador + atual;
+});
+total1; // 65
+
+const total2 = aulas1.reduce((acc, cur) => acc + cur, 100);
+total2; // 165
+
+//Reduce passo a passo 1 - O primeiro parâmetro do callback é o valor do segundo argumento passado no reduce(callback, inicial) durante a primeira iteração. Nas iterações seguintes este valor passa a ser o retornado pela anterior.
+const webaulas = [10, 25, 30];
+
+// 1
+// webaulas.reduce((0, 10) => {
+//   return 0 + 10;
+// }, 0); // retorna 10
+
+// 2
+// webaulas.reduce((10, 25) => {
+//   return 10 + 25;
+// }, 0); // retorna 35
+
+// 3
+// webaulas.reduce((35, 30) => {
+//   return 35 + 30;
+// }, 0); // retorna 65
+
+//Reduce passo a passo 2 - Se não definirmos o valor inicial do acumulador, ele irá pular a primeira iteração e começara a partir da segunda. Neste caso o valor do acumulador será o valor do item da primeira iteração.
+const webaulas1 = [10, 25, 30];
+
+// 1
+// webaulas1.reduce((10, 25) => {
+//   return 10 + 25;
+// }) // retorna 35
+
+// 2
+// webaulas1.reduce((35, 30) => {
+//   return 35 + 30;
+// }) // retorna 65
+
+//Maior Valor com Reduce - const numeros = [10, 25, 60, 5, 35, 10];
+const maiorValor = numeros.reduce((anterior, atual) => {
+  return anterior < atual ? atual : anterior;
+});
+
+maiorValor; // 60
+
+//Podemos retornar outros valores 
+const aulas2 = [
+  {
+    nome: 'HTML 1',
+    min: 15
+  },
+  {
+    nome: 'HTML 2',
+    min: 10
+  },
+  {
+    nome: 'CSS 1',
+    min: 20
+  },
+  {
+    nome: 'JS 1',
+    min: 25
+  },
+]
+
+const listaAulas = aulas2.reduce((acumulador, atual, index) => {
+  acumulador[index] = atual.nome;
+  return acumulador;
+}, {})
+
+//Passo a passo Reduce - Passo a passo do método reduce criando um Objeto.
+// // 1
+// aulas.reduce(({}, {nome: 'HTML 1', min: 15}, 0) => {
+//   {}[0] = 'HTML 1';
+//   return {0: 'HTML 1'};
+// }, {})
+
+// // 2
+// aulas.reduce(({0: 'HTML 1'}, {nome: 'HTML 2', min: 10}, 1) => {
+//   {0: 'HTML 1'}[1] = 'HTML 2';
+//   return {0: 'HTML 1', 1: 'HTML 2'};
+// }, {})
+
+// // 3
+// aulas.reduce(({0: 'HTML 1', 1: 'HTML 2'}, {nome: 'CSS 1', min: 20}, 2) => {
+//   {0: 'HTML 1', 1: 'HTML 2'}[2] = 'CSS 1';
+//   return {0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1'};
+// }, {})
+
+// // 4
+// aulas.reduce(({0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1'}, {nome: 'JS 1', min: 25}, 3) => {
+//   {0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1'}[3] = 'JS 1';
+//   return {0: 'HTML 1', 1: 'HTML 2', 2: 'CSS 1', 3: 'JS 1'};
+// }, {})
+
+//Reduce Right - Existe também o método [].reduceRight(), a diferença é que este começa a iterar da direita para a esquerda, enquanto o reduce itera da esquerda para a direita.
+const frutas = ['Banana', 'Pêra', 'Uva'];
+
+const frutasRight = frutas.reduceRight((acc, fruta) => acc + ' ' + fruta);
+const frutasLeft = frutas.reduce((acc, fruta) => acc + ' ' + fruta);
+
+frutasRight; // Uva Pêra Banana
+frutasLeft; // Banana Pêra Uva
+
+//Some - [].some(), se pelo menos um return da iteração for truthy, ele retorna true.
+const fritas1 = ['Banana', 'Pêra', 'Uva'];
+const temUva = fritas1.some((fruta) => {
+  return fruta === 'Uva';
+}); // true
+
+function maiorQue100(numero) {
+  return numero > 100;
 }
+const numbers = [0, 43, 22, 88, 101, 2];
+const temMaior = numbers.some(maiorQue100); // true
 
-const carrosArray = Array.from(carros);
+//Every - [].every(), se todos os returns das iterações forem truthy, o método irá retornar true. Se pelo menos um for falsy, ele irá retornar false.
+const frutas2 = ['Banana', 'Pêra', 'Uva', ''];
+// False pois pelo menos uma fruta
+// está vazia '', o que é um valor falsy
+const arraysCheias = frutas2.every((fruta) => {
+  return fruta; // false
+});
 
-//IsArray - Verifica se o valor passado é uma array e retorna um valor booleano.
-let li = document.querySelectorAll('li'); // NodeList
-Array.isArray(li); // false
+const numeros1 = [6, 43, 22, 88, 101, 29];
+const maiorQue3 = numeros1.every(x => x > 3); // true
 
-li = Array.from(li); // Array
-Array.isArray(li); // true
+//Find e FindIndex - [].find(), retorna o valor atual da primeira iteração que retornar um valor truthy. Já o [].findIndex(), ao invés de retornar o valor, retorna o index deste valor na array.
+const frutas1 = ['Banana', 'Pêra', 'Uva', 'Maçã'];
+const buscaUva = frutas1.findIndex((fruta) => {
+  return fruta === 'Uva'; 
+}); // 2
 
-//Arrar.of, array, new array - A palavra chave new não é necessária para utilizar o construtor Array.
-Array.of(10); // [10]
-Array.of(1,2,3,4); // [1,2,3,4]
-new Array(5); // [,,,,]
-Array(5); // [,,,,]
-Array(1,2,3,4); // [1,2,3,4]
+const numeros3 = [6, 43, 22, 88, 101, 29];
+const buscaMaior45 = numeros3.find(x => x > 45); // 88
 
-//Length - [].length retorna o tamanho da array.
-const frutas = ['Banana', 'Pêra', ['Uva Roxa', 'Uva Verde']];
-frutas.length; // 3
+//Filter - [].filter(), retorna uma array com a lista de valores que durante a sua iteração retornaram um valor truthy.
+const frutas3 = ['Banana', undefined, null, '', 'Uva', 0, 'Maçã'];
+const arrayLimpa = frutas3.filter((fruta) => {
+  return fruta; 
+}); // ['Banana', 'Uva', 'Maçã']
 
-frutas[0].length; // 6
-frutas[1].length; // 4
-frutas[2].length; // 2
+const numeros4 = [6, 43, 22, 88, 101, 29];
+const maior45 = numeros4.filter(x => x > 45); // [88, 101]
 
-//Sort - Os próximos métodos que vamos falar sobre, são métodos modificadores (mutator methods). Além de retornarem um valor, eles modificam a array original. [].sort() organiza a pelo unicode.
-const instrumentos3 = ['Guitarra', 'Baixo', 'Violão'];
-instrumentos3.sort();
-instrumentos3; // ['Baixo', 'Guitarra', Violão]
+//Filter em objetos 
+const aulas3 = [
+  {
+    nome: 'HTML 1',
+    min: 15
+  },
+  {
+    nome: 'HTML 2',
+    min: 10
+  },
+  {
+    nome: 'CSS 1',
+    min: 20
+  },
+  {
+    nome: 'JS 1',
+    min: 25
+  },
+]
 
-const idades = [32,21,33,43,1,12,8];
-idades.sort();
-idades; // [1, 12, 21, 32, 33, 43, 8]
-
-//Unshift e push - [].unshift() adiciona elementos ao início da array e retorna o length da mesma. [].push() adiciona elementos ao final da array e retorna o length da mesma.
-const carros = ['Ford', 'Fiat', 'VW'];
-carros.unshift('Honda', 'Kia'); // 5
-carros; // ['Honda', 'Kia', 'Ford', 'Fiat', 'VW'];
-
-carros.push('Ferrari'); // 6
-carros; // ['Honda', 'Kia', 'Ford', 'Fiat', 'VW', 'Ferrari'];
-
-//Shift e pop - [].shift() remove o primeiro elemento da array e retorna o mesmo. [].pop() remove o último elemento da array e retorna o mesmo.
-const carros = ['Ford', 'Fiat', 'VW', 'Honda'];
-const primeiroCarro = carros.shift(); // 'Ford'
-carros; // ['Fiat', 'VW', 'Honda'];
-
-const ultimoCarro = carros.pop(); // 'Honda'
-carros; // ['Fiat', 'VW'];
-
-//Reverse - [].reverse() inverte os itens da array e retorna a nova array.
-const carros = ['Ford', 'Fiat', 'VW', 'Honda'];
-carros.reverse(); // ['Honda', 'VW', 'Fiat', 'Ford'];
-
-//Splice - [].splice(index, remover, item1, item2, ...) adiciona valores na array a partir do index. Remove a quantidade de itens que for passada no segundo parâmetro (retorna esses itens).
-const carros = ['Ford', 'Fiat', 'VW', 'Honda'];
-carros.splice(1, 0, 'Kia', 'Mustang'); // []
-carros; // ['Ford', 'Kia', 'Mustang', 'Fiat', 'VW', 'Honda']
-
-carros.splice(3, 2, 'Ferrari'); // ['Fiat', 'VW']
-carros; // ['Ford', 'Kia', 'Mustang', 'Ferrari', 'Honda']
-
-//CopyWithIn - [].copyWithin(alvo, inicio, final) a partir do alvo, ele irá copiar a array começando do inicio até o final e vai preencher a mesma com essa cópia. Caso omita os valores de início e final, ele irá utilizar como inicio o 0 e final o valor total da array.
-['Item1', 'Item2', 'Item3', 'Item4'].copyWithin(2, 0, 3);
-// ['Item1', 'Item2', 'Item1', 'Item2']
-
-['Item1', 'Item2', 'Item3', 'Item4'].copyWithin(-1);
-// ['Item1', 'Item2', 'Item3', 'Item1']
-
-//Fill - [].fill(valor, inicio, final) preenche a array com o valor, do início até o fim.
-['Item1', 'Item2', 'Item3', 'Item4'].fill('Banana');
-// ['Banana', 'Banana', 'Banana', 'Banana']
-
-['Item1', 'Item2', 'Item3', 'Item4'].fill('Banana', 2);
-// ['Item1', 'Item2', 'Banana', 'Banana']
-
-['Item1', 'Item2', 'Item3', 'Item4'].fill('Banana', 1, 3);
-// ['Item1', 'Banana', 'Banana', 'Item4']
-
-//Métodos de acesso - concat - Os métodos abaixo não modificam a array original, apenas retornam uma array modificada. [].concat() irá concatenar a array com o valor passado.
-const transporte1 = ['Barco', 'Aviao'];
-const transporte2 = ['Carro', 'Moto'];
-const transportes = transporte1.concat(transporte2);
-// ['Barco', 'Aviao', 'Carro', 'Moto'];
-
-const maisTransportes = [].concat(transporte1, transporte2, 'Van');
-// ['Barco', 'Aviao', 'Carro', 'Moto', 'Van'];
-
-//Includes, indexof, lastindexof - [].includes(valor) verifica se a array possui o valor e retorna true ou false. [].indexOf(valor) verifica se a array possui o valor e retorna o index do primeiro valor na array. Já o [].lastIndexOf(valor) retorna o index do último.
-const linguagens = ['html', 'css', 'js', 'php', 'python', 'js'];
-
-linguagens.includes('css'); // true
-linguagens.includes('ruby'); // false
-linguagens.indexOf('python'); // 4
-linguagens.indexOf('js'); // 2
-linguagens.lastIndexOf('js'); // 5
-
-//Join - [].join(separador) junta todos os valores da array e retorna uma string com eles. Se você passar um valor como parâmetro, este será utilizado durante a junção de cada item da array.
-const lagns = ['html', 'css', 'js', 'php', 'python'];
-lagns.join(); // 'html,css,js,php,python'
-lagns.join(' '); // 'html css js php python'
-lagns.join('-_-'); // 'html-_-css-_-js-_-php-_-python'
-
-let htmlString = '<h2>Título Principal</h2>'
-htmlString = htmlString.split('h2');
-// ['<', '>Título Principal</', '>']
-htmlString = htmlString.join('h1');
-// <h1>Título Principal</h1>
-
-//Slice - [].slice(inicio, final) retorna os itens da array começando pelo início e indo até o valor de final.
-const linguagens2 = ['html', 'css', 'js', 'php', 'python'];
-linguagens2.slice(3); // ['php', 'python']
-linguagens2.slice(1, 4); // ['css', 'js', 'php']
-
-const cloneLinguagens = linguagens2.slice();;//clonagem
+const aulasMaiores = aulas3.filter((aula) => { 
+  return aula.min > 15;
+});
+// [{nome: 'CSS 1', min: 20}, {nome: 'JS 1', min: 25}]
