@@ -117,7 +117,7 @@ const novaFruta = frutas1;
 Object.is(frutas1, frutas2); // false
 Object.is(frutas1, novaFruta); // true
 
-//Object.freeze(), Object.seal(), Object.preventExtensions() - Object.freeze() impede qualquer mudança nas propriedades. Object.seal() previne a adição de novas propriedades e impede que as atuais sejam deletadas. Object.preventExtensions() previne a adição de novas propriedades.
+//Object.freeze(), Object.seal(), Object.preventExtensions() - Object.freeze() impede qualquer mudança nas propriedades. Object.seal() previne a adição de novas propriedades e impede que as atuais sejam deletadas. Object.preventExtensions() previne a adição de novas propriedades, porém permite o delete das antigas.
 const carro3 = {
   marca: 'Ford',
   ano: 2018,
@@ -129,6 +129,57 @@ const carro3 = {
 carro.marca = 'Honda';
 
 //Verificações
-console.log(Object.isFrozen(carro3));
-console.log(Object.isExtensible(carro3));
-console.log(Object.isSealed(carro3));
+console.log(Object.isFrozen(carro3));//verifica se está congelado
+console.log(Object.isExtensible(carro3));//verifica se está extensível - Só é true quando não previne a extensão!
+console.log(Object.isSealed(carro3));//verifica se está fechado
+
+//Propriedades e métodos do protótipo - Já que tudo em JavaScript é objeto, as propriedades abaixo estão disponíveis em todos os objetos criados a partir de funções construtoras. {}.constructor retorna a função construtora do objeto.
+const frutas3 = ['Banana', 'Uva'];
+frutas3.constructor; // Array
+
+const frase = 'Isso é uma String';
+frase.constructor; // String
+
+//{}.hasOwnProperty('prop') e {}.propertyIsEnumerable('prop') - Verifica se possui a propriedade e retorna true. A propriedade deve ser direta do objeto e não do protótipo. O {}.propertyIsEnumerable() verifica se a propriedade é enumerável.
+frutas.hasOwnProperty('map');//false
+Array.hasOwnProperty('map');//false
+Array.prototype.hasOwnProperty('map');//true
+
+Array.prototype.propertyIsEnumerable('map'); // false
+window.propertyIsEnumerable('innerHeight'); // true
+
+//isPrototypeOf(valor) - Verifica se é o protótipo do valor passado.
+Array.prototype.isPrototypeOf(frutas); // true
+
+//ToString - Retorna o tipo do objeto. O problema é toString() ser uma função dos protótipos de Array, String e mais. Por isso é comum utilizarmos a função direto do Object.prototype.toString.call(valor).
+
+const frutas4 = ['Uva','Laranja'];
+const frase2 = 'Oi frase';
+const somar = function(a,b){
+  return a + b;
+}
+const carro4 = {
+  marca: 'Fiat'
+}
+console.log(carro4.toString());
+
+console.log(Object.prototype.toString.call(frase2));//maneira certa de verificar qual o tipo de um objeto
+
+const frutas5 = ['Banana', 'Uva'];
+frutas5.toString(); // 'Banana,Uva'
+typeof frutas5; // object
+Object.prototype.toString.call(frutas5); // [object Array]
+
+const frase3 = 'Uma String';
+frase3.toString(); // 'Uma String'
+typeof frase3; // string
+Object.prototype.toString.call(frase3); // [object String]
+
+const carro = {marca: 'Ford'};
+carro.toString(); // [object Object]
+typeof carro; // object
+Object.prototype.toString.call(carro); // [object Object]
+
+const li = document.querySelectorAll('li');
+typeof li; // object
+Object.prototype.toString.call(li); // [object NodeList]
