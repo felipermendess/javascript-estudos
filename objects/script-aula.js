@@ -175,10 +175,10 @@ frase3.toString(); // 'Uma String'
 typeof frase3; // string
 Object.prototype.toString.call(frase3); // [object String]
 
-const carro = {marca: 'Ford'};
-carro.toString(); // [object Object]
-typeof carro; // object
-Object.prototype.toString.call(carro); // [object Object]
+const carro5 = {marca: 'Ford'};
+carro5.toString(); // [object Object]
+typeof carro5; // object
+Object.prototype.toString.call(carro5); // [object Object]
 
 const li = document.querySelectorAll('li');
 typeof li; // object
