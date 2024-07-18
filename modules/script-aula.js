@@ -49,3 +49,41 @@
 // import * as scroll from './scroll.js';
 // scroll.scrollSuave();
 // scroll.scrollAnimacao();
+
+//Valores do export - Podemos exportar objetos, funções, classes, números, strings e mais.
+
+// arquivo configuracao.js
+// export function scrollSuave() {};
+// export const ano = 2000;
+// export const obj = {nome: 'Ford'};
+// export const str = 'Frase';
+// export class Carro {};
+
+// arquivo script.js
+// import * as conf from './configuracao.js';
+// conf.str;
+// conf.obj;
+// conf.ano;
+
+//Características
+// Strict mode
+
+// 'use strict' por padrão em todos os arquivos.
+
+// Variáveis ficam no module apenas
+
+// Não vazam para o escopo globo.
+
+// This fora de um objeto faz referência a undefined
+
+// Ao invés de fazer referência ao window.
+
+// Assíncrono
+
+//Use strict - O modo estrito previne que algumas ações consideradas erros. Basta adicionarmos 'use strict' no topo de um arquivo, que ele entrará neste modo.
+// 'use strict';
+
+// nome = 'Ford'; // erro, variável global
+// delete Array.prototype; // erro, não deletável
+// window.top = 200; // erro, não pode mudar
+// const arguments = 3.14; // escrever em palavra reservada
