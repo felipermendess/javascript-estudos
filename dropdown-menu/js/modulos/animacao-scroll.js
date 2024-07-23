@@ -18,4 +18,3 @@ export default function animacaoAoScroll(){
     window.addEventListener('scroll', animaScroll);
   }
 }
-animacaoAoScroll();
