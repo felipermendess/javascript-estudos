@@ -5,9 +5,8 @@ export default function initDropdownMenu(){
 const dropdownMenus = document.querySelectorAll('[data-dropdown]');
 
 dropdownMenus.forEach(menu => {
-  ['touchstart','click'].forEach(userEvent => {
-    menu.addEventListener(userEvent, handleClick);
-  })
+  menu.addEventListener('click', handleClick);
+  menu.addEventListener('touchstart', handleClick);
 })
 
 function handleClick(event){
