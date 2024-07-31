@@ -6,9 +6,57 @@
   <title>Formulários</title>
 </head>
 <body>
-  
+  <style>
+    label{
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      margin-bottom: .5rem;
+      margin-top: 1rem;
+    }
+    form{
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    input, textarea{
+      width: 100%;
+      box-sizing: border-box;
+      padding: .5rem;
+      border: 2px solid black;
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+    textarea{
+      height: 150px;
+    }
+  </style>
+
+  <form name="contato" id="contato">
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" id="nome">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email">
+    <label for="mensagem">Mensagem</label>
+    <textarea name="mensagem" id="mensagem"></textarea>
+  </form>
+  <span class="texto"></span>
 
   <script src="script.js"></script>
   <script src="script-aula.js"></script>
+  <script>
+    const contato = document.querySelector('#contato');
+    const texto = document.querySelector('.texto');
+    // console.log(contato);
+    // console.log(contato.elements);
+    // console.log(contato.elements.nome.value);
+    // console.log(contato.elements.email);//puxa pelo name ou id
+    // console.log(document.forms);
+    // console.log(document.forms[0]);
+    function handleKeyUp(e){
+      console.log(e.target.value);
+      texto.innerText = e.target.value;
+    }
+    contato.addEventListener('change', handleKeyUp);
+  </script>
 </body>
 </html>
