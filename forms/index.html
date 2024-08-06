@@ -29,15 +29,37 @@
     textarea{
       height: 150px;
     }
+    .erro{
+      border-color: red;
+    }
   </style>
 
   <form name="contato" id="contato">
     <label for="nome">Nome</label>
-    <input type="text" name="nome" id="nome">
+    <input type="text" name="nome" id="nome" required> 
+    <span class="invalido"></span>
     <label for="email">Email</label>
-    <input type="email" name="email" id="email">
+    <input type="email" name="email" id="email" required>
+    <span class="invalido"></span>
     <label for="mensagem">Mensagem</label>
     <textarea name="mensagem" id="mensagem"></textarea>
+    <!-- <select name="cores" id="cores">
+      <option value="blue">Azul</option>
+      <option value="red">Vermelho</option>
+    </select>
+    <input type="color">
+    <input type="date">
+    <input type="number">
+    <input type="range">
+    <input type="password">
+    <input type="checkbox" value="identidade" id="identidade">
+    <label for="identidade">Possui identidade?</label>
+    <input type="checkbox" value="casado" id="casado">
+    <label for="casado">Casado?</label>
+    <input type="radio" value="guitarra" id="guitarra" name="instrumento">
+    <label for="guitarra">Possui guitarra?</label>
+    <input type="radio" value="violao" id="violao" name="instrumento">
+    <label for="violao">violao?</label> -->
   </form>
   <span class="texto"></span>
 
@@ -45,18 +67,44 @@
   <script src="script-aula.js"></script>
   <script>
     const contato = document.querySelector('#contato');
-    const texto = document.querySelector('.texto');
+    const dados = {};
+    
+    function handleChange(event){
+      dados[event.target.name] = event.target.value;
+    }
+    contato.addEventListener('change', handleChange);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // if(event.target.checked){
+    //   console.log(event.target.value)
+    // }
+    
+    // document.body.style.backgroundColor = event.target.value;
+    
+    // const target = event.target;
+    // if(!target.checkValidity()){
+    //   target.classList.add('erro');
+    //   contato.nome.setCustomValidity('Nome não inserido!');
+    //   target.nextElementSibling.innerText = target.validationMessage;
+      
+    // }
+    // console.log(event.target.checkValidity());
+    // console.log(event.target.value);
+    // texto.innerText = event.target.value;
+    
     // console.log(contato);
     // console.log(contato.elements);
     // console.log(contato.elements.nome.value);
     // console.log(contato.elements.email);//puxa pelo name ou id
     // console.log(document.forms);
     // console.log(document.forms[0]);
-    function handleKeyUp(e){
-      console.log(e.target.value);
-      texto.innerText = e.target.value;
-    }
-    contato.addEventListener('change', handleKeyUp);
-  </script>
+    </script>
 </body>
 </html>
