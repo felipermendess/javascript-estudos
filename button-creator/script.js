@@ -47,6 +47,9 @@ function controlChange(event){
 
   //ATIVANDO FUNÇÃO DO CSS
   showCSS()
+
+  //ATIVANDO A FUNÇÃO COM LOCALSTORAGE PARA SALVAR VALORES
+  saveValues(name,value);
 }
 
 //FUNÇÃO QUE VAI MOSTRAR O CSS SELECIONADO
@@ -54,3 +57,20 @@ function showCSS(){
   //CSSTEXT DO BTN É UM MÉTODO QUE RETORNA EXATAMENTE A PROPRIEDADE CSS
   cssText.innerHTML = "<span>" + btn.style.cssText.split("; ").join(";</span><span>");
 }
+
+//FUNÇÃO USANDO LOCALSTORAGE PARA SALVAR VALORES
+function saveValues(name, value){
+  localStorage[name] = value;
+}
+
+//FUNÇÃO PARA SETAR OS VALORES SALVOS
+function setValues(){
+  const properties = Object.keys(localStorage);
+  properties.forEach(propertie => {
+    controlStyle[propertie](localStorage[propertie])
+    controles.elements[propertie].value = localStorage[propertie];
+  })
+  showCSS();
+}
+
+setValues()
