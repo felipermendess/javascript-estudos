@@ -76,12 +76,10 @@
 
 //Testes
 const pessoas = ['Felipe', 'Gustavo'];//Possui o symbol iterator
-const frase = 'Quinta-Feira';//Possui o symbol iterator
-console.log(pessoas)
-console.log(frase)
+const frases = 'Quinta-Feira';//Possui o symbol iterator
 
 //é interessante saber se possuem, pois se possuirem, é possível usar o for of
-for(const frases of frase){ //antes do of pode ser qualquer nome
+for(const frase of frases){ //antes do of pode ser qualquer nome
     console.log(frases)
 }
 
@@ -110,23 +108,23 @@ console.log(carro.__proto__)
 //do objeto puxa só as propriedades enumeráveis
 for(const key in carro){
     console.log(key)//propriedades
-    console.log(carro[key])//valores
+    // console.log(carro[key])//valores
 }
 
 //os arryas também podem ser usados com for in, porém o que é puxado é o index
 const frutas = ['Maçã', 'Banana', 'Laranja']
 for(const f in frutas){
     console.log(f)//index
-    console.log(frutas[f])//frutas
+    // console.log(frutas[f])//frutas
 }
 
 
-const btn = document.querySelector('button')
-const btnStyles = getComputedStyle(btn)
-for(const style of btnStyles){
-    // console.log(style)//estilos
-    console.log(style + ': ' + btnStyles[style])
-}
+// const btn = document.querySelector('button')
+// const btnStyles = getComputedStyle(btn)
+// for(const style of btnStyles){
+//     // console.log(style)//estilos
+//     console.log(style + ': ' + btnStyles[style])
+// }
 
 //do while
 let i = 0;

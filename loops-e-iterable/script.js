@@ -10,6 +10,6 @@ console.log(li_s)
 // Utilize o for...in para listar
 // todos as propriedades e valores
 // do objeto window
-for(const value in window){
-    console.log(value + ': ' + window[value])
-}
+// for(const value in window){
+//     console.log(value + ': ' + window[value])
+// }
