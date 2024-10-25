@@ -216,6 +216,64 @@
 // '11_22 33-44 55é66 77e88'.replace(regexpDigito, 'X');
 // // 1X_X2 33-44 55é66 7XeX8
 
+//Anchor Beginning - Com o ^ é possível informar que a busca deve ser iniciada no início da linha.
+// // Procura: sequência de alfanuméricos
+// // no início da linha.
+// const regexp = /^\w+/g;
+
+// `andre@origamid.com
+// contato@origamid.com`.replace(regexp, 'X');
+// // X@origamid.com
+// // contato@origamid.com
+
+//Anchor End -  Com o $ é possível informar que a busca deve ser iniciada no final da linha.
+// // Procura: sequência de alfanuméricos
+// // no final da linha.
+// const regexp = /\w+$/g;
+
+// `andre@origamid.com
+// contato@origamid.com`.replace(regexp, 'X');
+// // andre@origamid.com
+// // contato@origamid.X
+
+//Flag M - Com a flag m de multiline, podemos informar que a busca de início ^ e final $ de linha devem ocorrer em todas as linhas disponíveis.
+// // Procura: sequência de alfanuméricos
+// // no final da linha.
+// const regexp = /\w+$/gm;
+
+// `andre@origamid.com
+// contato@origamid.com`.replace(regexp, 'X');
+// // andre@origamid.X
+// // contato@origamid.X
+
+// // Procura: sequência de alfanuméricos
+// // no início da linha.
+// const regexp = /^\w+/gm;
+
+// `andre@origamid.com
+// contato@origamid.com`.replace(regexp, 'X');
+// // X@origamid.com
+// // X@origamid.com
+
+//Line feed \n - O \n irá selecionar o final de uma linha, quando criamos uma nova.
+// const regexp = /\n/g;
+
+// `andre@origamid.com\ncontato@origamid.com`.replace(regexp, '---');
+// // andre@origamid.com---contato@origamid.com
+
+// `andre@origamid.com
+// contato@origamid.com`.replace(regexp, 'X');
+// // andre@origamid.com---contato@origamid.com
+
+//     \t seleciona tabs
+
+//Unicode \u - O \u irá selecionar o respectivo caracter unicode, de acordo com o código passado em \uXXXX. Ex: \u0040 seleciona o @.
+// // Procura: @ ou ©
+// const regexp = /\u0040|\u00A9/g;
+
+// 'andre@origamid.com ©'.replace(regexp, '---');
+// // andre---origamid.com ---
+
 //Testes
 const frase = 'PHP'; //sentido literal - p seguido de h e p
 const novaFrase = frase.replace(/P/, 'J')
@@ -295,3 +353,13 @@ const regexpDigito2 = /\B\d+\B/gi;
 
 '11_22 33-44 55é66 77e88'.replace(regexpDigito2, 'X');
 // 1X_X2 33-44 55é66 7XeX8
+
+const regexp23 = /^\w+/gm; //O ^ é informa que a busca deve ser iniciada no início da linha.
+const regexp24 = /\w+$/gm; //O $ é informa que a busca deve ser iniciada no final da linha.
+
+//Com a flag m de multiline, podemos informar que a busca de início ^ e final $ de linha devem ocorrer em todas as linhas disponíveis.
+
+const regexp25 = /\n/g; //O \n irá selecionar o final de uma linha, quando criamos uma nova.
+
+const regexp26 = /\u00A9|\u0040/g; //Unicode do copyright e arroba.
+//unicode table tem os códigos.
