@@ -75,8 +75,146 @@
 // const regexp = /[^a-z]/g;
 
 // 'Brasil é com z: Brazil'.replace(regexp, ' ');
-// // rasil   com z   razil 
+// // rasil   com z   razil
 
+//Ponto - O ponto . irá selecionar qualquer caracter, menos quebras de linha.
+// // Procura: todos os caracteres menos quebra de linha
+// const regexp = /./g;
+
+// 'JavaScript é a linguagem.'.replace(regexp, '0');
+// // 0000000000000000000000000
+
+//Escapar Especiais - Caracteres especiais como o ponto ., podem ser escapados utilizando a barra \, assim este não terá mais a sua função especial e será tratado como literal. Lista de caracteres especiais: +*?^$\.[]{}()|/
+// // Procura: todos os pontos
+// const regexp = /\./g;
+// const regexpAlternativa = /[.]/g;
+
+// '999.222.222.11'.replace(regexp, '-');
+// // 999-222-222-11
+
+//Word - O \w irá selecionar qualquer caracter alfanumérico e o underline. É a mesma coisa que [A-Za-z0-9_].
+// // Procura: todos os alfanuméricos
+// const regexp = /\w/g;
+
+// 'Guarda-chuva R$ 23,00.'.replace(regexp, '-');
+// // ------------ -$ --,--.
+
+//Not Word - O \W irá selecionar tudo o que não for caracter alfanumérico e o underline. É a mesma coisa que [^A-Za-z0-9_].
+// // Procura: o que não for caracter alfanuméricos
+// const regexp = /\W/g;
+
+// 'Guarda-chuva R$ 23,00.'.replace(regexp, '-');
+// // Guarda-chuva-R--23-00-
+
+//Digit - O \d irá selecionar qualquer dígito. É a mesma coisa que [0-9].
+// // Procura: todos os dígitos
+// const regexp = /\d/g;
+
+// '+55 (21) 2222-2222'.replace(regexp, 'X');
+// // +XX (XX) XXXX-XXXX.
+
+//Not Digit - O \D irá selecionar tudo que não for dígito. É a mesma coisa que [^0-9].
+// // Procura: o que não for dígito
+// const regexp = /\D/g;
+
+// '+55 (21) 2222-2222'.replace(regexp, '');
+// // 552122222222
+
+//WhiteSpace - O \s irá selecionar qualquer espaço em branco, isso inclui espaços, tabs, quebra de linhas.
+// // Procura: espaços em branco
+// const regexp = /\s/g;
+
+// '+55 (21) 2222-  2222  '.replace(regexp, '');
+// // +55(21)2222-2222
+
+//Not WhiteSpace - O \S irá selecionar qualquer caracter que não for espaço em branco.
+// // Procura: o que não for espaço em branco
+// const regexp = /\S/g;
+
+// '+55 (21) 2222-  2222  '.replace(regexp, '');
+// // XXX XXXX XXXXX  XXXX
+//
+//     /[\s\S]/g irá selecionar tudo.
+
+//Quantificador - É possível selecionar caracteres seguidos, como /bbb/g irá selecionar apenas bbb. Com as chaves podemos indicar a repetição /b{3}/g. Agora ele está fazendo uma seleção completa e não caracter por caracter.
+// // Procura: 4 a's seguidos
+// const regexp = /aaaa/g;
+// const regexpAlt = /a{4}/g;
+
+// 'Vaaaai ali por favor.'.replace(regexp, 'a');
+// // Vai ali por favor.
+
+//Quantificador Min e Max - Podemos informar o min e max do quantificador /a{2,4}/ vai selecionar quando aparecer a duas vezes ou até 4 vezes. /a{2,}/ irá selecionar quando se repetir duas ou mais vezes.
+// // Procura: dígitos seguidos de 2 à 3
+// const regexp = /\d{2,3}/g;
+
+// '222.333.222.42'.replace(regexp, 'X');
+// // X.X.X.X
+
+// // Procura: letras seguidos com 1 caracter ou mais
+// const regexpLetras = /\w{1,}/g;
+
+// 'A melhor linguagem é JavaScript'.replace(regexpLetras, 'X');
+// // X X X é X
+
+//Mais + - O sinal de + significa que devemos selecionar quando existir pelo menos uma ou mais ocorrências.
+// // Procura: dígitos em ocorrência de um ou mais
+// const regexp = /\d+/g;
+
+// '222.333.222.42'.replace(regexp, 'X');
+// // X.X.X.X
+
+// // Procura: Começa com d, seguido por uma ou mais letras.
+// const regexpLetras = /d\w+/g;
+
+// 'Dígitos, dados, desenhos, Dito, d'.replace(regexpLetras, 'X');
+// // Dígitos, X, X, Dito, d
+
+//Asterisco - O sinal * significa que devemos selecionar quando existir 0 ou mais ocorrências.
+// // Procura: Começa com d, seguido por zero ou mais letras.
+// const regexp = /d\w*/g;
+
+// 'Dígitos, dados, desenhos, Dito, d'.replace(regexp, 'X');
+// // Dígitos, X, X, Dito, X
+
+//Opcional - O sinal ? significa que o caracter é opcional, pode ou não existir.
+// // Procura: Por regex com p opcional
+// const regexp = /regexp?/g;
+
+// 'Qual é o certo, regexp ou regex?'.replace(regexp, 'Regular Expression');
+// // Qual é o certo, Regular Expression ou Regular Expression?
+
+//Alternado - O sinal | irá selecionar um ou outro. java|php
+// // Procura: java ou php (case insensitive)
+// const regexp = /java|php/gi;
+
+// 'PHP e Java são linguagens diferentes'.replace(regexp, 'X');
+// // X e X são linguagens diferente
+
+//Word Boundary - O sinal \b irá indicar que pretendemos fazer uma seleção que deve ter início e fim de não caracteres \w.
+// // Procura: java (case insensitive)
+// const regexp = /java/gi;
+// 'Java não é JavaScript.'.replace(regexp, 'X');
+// // X não é XScript.
+
+// // Procura: java (case insensitive)
+// const regexpBoundary = /\bjava\b/gi;
+// 'Java não é JavaScript.'.replace(regexpBoundary, 'X');
+// // X não é JavaScript.
+
+// // Procura: Dígitos em sequência, que estejam isolados
+// const regexpDigito = /\b\d+\b/gi;
+// 'O Restaurante25 na Rua 3, custa R$ 32,00'.replace(regexDigito, 'X');
+// // O Restaurante25 na Rua X, custa R$ X,X
+
+// '11_22 33-44 55é66 77e88'.replace(regexpDigito, 'X');
+// // 11_22 X-X XéX 77e88
+
+//Not Word Boundary - É o contrário do \b.
+// const regexpDigito = /\B\d+\B/gi;
+
+// '11_22 33-44 55é66 77e88'.replace(regexpDigito, 'X');
+// // 1X_X2 33-44 55é66 7XeX8
 
 //Testes
 const frase = 'PHP'; //sentido literal - p seguido de h e p
@@ -92,7 +230,7 @@ const novaFrase3 = frase3.replace(/pe/gi, 'Lo')// flag i - ignora o case sensiti
 console.log(novaFrase3)//Lordeu Lodido Lordendo
 
 
-const regexp = /[ai]/gi; // Character class - Nesse caso procura: Todo a, A, i, I 
+const regexp = /[ai]/gi; // Character class - Nesse caso procura: Todo a, A, i, I
 //seleciona a, A ou i, I - um por um e não a palavra inteira - , por causa dos parênteses
 
 
@@ -112,3 +250,48 @@ const regexp5 = /[A-Za-z0-9-.]/g; //Selecionando praticamente tudo
 //https://unicode-table.com/en/
 
 const regexp6 = /[^a-z]/g; //Negando (não seleciona) as letras de a à z. - seleciona os outros mas não isso
+
+const regexp7 = /./g; //O ponto seleciona tudo, menos as quebras de linha;
+
+//Lista de caracteres especiais: +*?^$\.[]{}()|/
+
+const regexp8 = /\[\]/g; //Selecionando os dois parênteses escapando cada um deles
+
+const regexp9 = /\w/g; //Seleciona qualquer caracter alfanumérico e o underline. É a mesma coisa que [A-Za-z0-9_].
+const regexp10 = /\W/g; //Ele vai negar com W maiúsculo e pegar tudo que não for alfanumérico. ELE NEGA.
+const regexp11 = /\d/g; //Seleciona tudo que é dígito.
+const regexp12 = /\D/g; //Seleciona tudo que não for dígito. ELE NEGA.
+const regexp13 = /\s/g; //Seleciona tudo que for espaço, quebra de linha ou tab.
+const regexp14 = /\S/g; //Seleciona tudo que não for espaço, quebra de linha ou tab. ELE NEGA.
+
+//MACETE PARA SELECIONAR TUDO
+const regexp15 = /[\S\s]/g;
+
+const regexp16 = /i{3}/g; //Seleciona quantos 'i' indicado nas chaves;
+const regexp17 = /i{2,3}/g; //Seleciona quantos 'i' indicado nas chaves com quantidade MÁXIMA E MÍNIMA; Sempre tentar ir no máximo.
+const regexp18 = /i{2,}/g; //Seleciona quantos 'i' indicado nas chaves *a partir de 2 ou mais*.
+
+const regexp19 = /i+/g; //Seleciona um 'i' ou mais de um 'i'.
+
+const regexp20 = /ai*/g; //Seleciona ou não, 0 ou mais - como um 'a' sozinho ou vários 'i'.
+
+const regexp21 = /regexp?/gi; //Seleciona as palavras Regex e Regexp - pois o 'p' seguido do caracter '?' é opcional.
+
+const regexp22 = /felipe|gustavo|davi|lisan/gi; //Seleciona felipe, gustavo, davi e lisan.
+
+//Seleciona itens que tiver entre coisas que não palavras - Word Boundary \b
+// Procura: java (case insensitive)
+const regexpBoundary = /\bjava\b/gi;
+'Java não é JavaScript.'.replace(regexpBoundary, 'X');
+// X não é JavaScript.
+
+// Procura: Dígitos em sequência, que estejam isolados
+const regexpDigito = /\b\d+\b/gi;
+'O Restaurante25 na Rua 3, custa R$ 32,00'.replace(regexpDigito, 'X');
+// O Restaurante25 na Rua X, custa R$ X,X
+
+//Not Word Boundary \B - contrário do Word Boundary \b
+const regexpDigito2 = /\B\d+\B/gi;
+
+'11_22 33-44 55é66 77e88'.replace(regexpDigito2, 'X');
+// 1X_X2 33-44 55é66 7XeX8
