@@ -338,6 +338,45 @@
 // 'R$99, 100, 200, R$20'.replace(regexp, 'X');
 // // R$X, 100, 200, R$X
 
+//CEP - const regexpCEP = /\d{5}[-\s]?\d{3}/g;
+// const ceps = [
+//     '00000-000',
+//     '00000 000',
+//     '00000000'
+//   ];
+  
+//   for(cep of ceps) {
+//     console.log(cep, cep.match(regexpCEP));
+//   }
+  
+// CPF - const regexpCPF = /(?:\d{3}[-.]?){3}\d{2}/g;
+// const cpfs = [
+//   '000.000.000-00',
+//   '000-000-000-00',
+//   '000.000.000.00',
+//   '000000000-00',
+//   '00000000000'
+// ];
+
+// for(cpf of cpfs) {
+//   console.log(cpf, cpf.match(regexpCPF));
+// }
+
+//CNPJ - const regexpCNPJ = /\d{2}[-.]?(?:\d{3}[-.]?){2}[-\/]?\d{4}[-.]?\d{2}/g;
+// const cnpjs = [
+//     '00.000.000/0000-00',
+//     '00000000000000',
+//     '00-000-000-0000-00',
+//     '00.000.000/000000',
+//     '00.000.000.000000',
+//     '00.000.000.0000.00',
+//   ];
+  
+//   for(cnpj of cnpjs) {
+//     console.log(cnpj, cnpj.match(regexpCNPJ));
+//   }
+  
+
 //Testes
 const frase = 'PHP'; //sentido literal - p seguido de h e p
 const novaFrase = frase.replace(/P/, 'J')
@@ -351,10 +390,8 @@ const frase3 = 'Perdeu pedido pErdendo'
 const novaFrase3 = frase3.replace(/pe/gi, 'Lo')// flag i - ignora o case sensitive
 console.log(novaFrase3)//Lordeu Lodido Lordendo
 
-
 const regexp = /[ai]/gi; // Character class - Nesse caso procura: Todo a, A, i, I
 //seleciona a, A ou i, I - um por um e não a palavra inteira - , por causa dos parênteses
-
 
 const regexp2 = /[-.]/g; // Character Class Especial: Nesse caso procura: - ou .
 //podemos pesquisar por caracteres especiais
@@ -457,3 +494,29 @@ const regexp33 = /\d(?!px)/g;//seleciona o que não tiver frente de px.
 const regexp34 = /(?<=R\$)[\d]+/g;//Faz a seleção dos itens que possuírem o padrão dentro de (?<=) atrás dos mesmos.
 'R$99, 100, 200, R$20'.replace(regexp34, 'X');
 // // R$X, 100, 200, R$X
+
+const regexpCEP = /\d{5}[-\s]?\d{3}/g;
+const ceps = [
+    '00000-000',
+    '00000 000',
+    '00000000'
+];
+
+const regexpCPF = /(?:\d{3}[-.]?){3}\d{2}/g;
+const cpfs = [
+  '000.000.000-00',
+  '000-000-000-00',
+  '000.000.000.00',
+  '000000000-00',
+  '00000000000'
+];
+
+const regexpCNPJ = /\d{2}[-.]?(?:\d{3}[-.]?){2}[-\/]?\d{4}[-.]?\d{2}/g;
+const cnpjs = [
+    '00.000.000/0000-00',
+    '00000000000000',
+    '00-000-000-0000-00',
+    '00.000.000/000000',
+    '00.000.000.000000',
+    '00.000.000.0000.00',
+];
