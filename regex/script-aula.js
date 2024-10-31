@@ -376,6 +376,60 @@
 //     console.log(cnpj, cnpj.match(regexpCNPJ));
 //   }
   
+//Telefone - const regexpTELEFONE = /(?:\+?55\s?)?(?:\(?\d{2}\)?[-\s]?)?\d{4,5}[-\s]?\d{4}/g;
+// const telefones = [
+//   '+55 11 98888-8888',
+//   '+55 11 98888 8888',
+//   '+55 11 988888888',
+//   '+55 11988888888',
+//   '+5511988888888',
+//   '5511988888888',
+//   '11 98888-8888',
+//   '11 98888 8888',
+//   '(11) 98888 8888',
+//   '(11) 98888-8888',
+//   '11-98888-8888',
+//   '11 98888 8888',
+//   '11988888888',
+//   '11988888888',
+//   '988888888',
+//   '(11)988888888',
+//   '98888 8888',
+//   '8888 8888'
+// ];
+
+//Email - const regexpEMAIL = /[\w.-]+@[\w-]+\.[\w-.]+/gi;
+// const emails = [
+//   'email@email.com',
+//   'email@email.com.org',
+//   'email-email@email.com',
+//   'email_email@email.com',
+//   'email.email23@email.com.br',
+//   'email.email23@empresa-sua.com.br',
+//   'c@contato.cc',
+// ];
+
+//Tag - const regexpTAG = /<\/?[\w\s="']+\/?>/gi;
+// const tags = [
+//   '<div>Isso é uma div</div>',
+//   '<div class="ativa">Essa está ativa</div>',
+//   '<img src="imagem" />',
+//   '<img src="imagem">',
+//   '<ul class="ativa">',
+//   '<li>Essa está ativa</li>',
+//   '</ul>'
+// ];
+
+//Tag apenas o nome - const regexpTAG = /(?<=<\/?)[\w]+/gi;
+// const tags = [
+//   '<div>Isso é uma div</div>',
+//   '<div class="ativa">Essa está ativa</div>',
+//   '<img src="imagem" />',
+//   '<img src="imagem">',
+//   '<ul class="ativa">',
+//   '<li>Essa está ativa</li>',
+//   '</ul>'
+// ];
 
 //Testes
 const frase = 'PHP'; //sentido literal - p seguido de h e p
@@ -519,4 +573,59 @@ const cnpjs = [
     '00.000.000/000000',
     '00.000.000.000000',
     '00.000.000.0000.00',
+];
+
+const regexpTELEFONE = /(?:\+?55\s?)?(?:\(?\d{2}\)?[-\s]?)?\d{4,5}[-\s]?\d{4}/g;
+const telefones = [
+  '+55 11 98888-8888',
+  '+55 11 98888 8888',
+  '+55 11 988888888',
+  '+55 11988888888',
+  '+5511988888888',
+  '5511988888888',
+  '11 98888-8888',
+  '11 98888 8888',
+  '(11) 98888 8888',
+  '(11) 98888-8888',
+  '11-98888-8888',
+  '11 98888 8888',
+  '11988888888',
+  '11988888888',
+  '988888888',
+  '(11)988888888',
+  '98888 8888',
+  '8888 8888'
+];
+
+const regexpEMAIL = /[\w.-]+@[\w-]+\.[\w-.]+/gi;
+const emails = [
+  'email@email.com',
+  'email@email.com.org',
+  'email-email@email.com',
+  'email_email@email.com',
+  'email.email23@email.com.br',
+  'email.email23@empresa-sua.com.br',
+  'c@contato.cc',
+];
+
+const regexpTAG = /<\/?[\w\s="']+\/?>/gi;
+const tags = [
+  '<div>Isso é uma div</div>',
+  '<div class="ativa">Essa está ativa</div>',
+  '<img src="imagem" />',
+  '<img src="imagem">',
+  '<ul class="ativa">',
+  '<li>Essa está ativa</li>',
+  '</ul>'
+];
+
+const regexpTAGS = /(?<=<\/?)[\w]+/gi;
+const tagss = [
+  '<div>Isso é uma div</div>',
+  '<div class="ativa">Essa está ativa</div>',
+  '<img src="imagem" />',
+  '<img src="imagem">',
+  '<ul class="ativa">',
+  '<li>Essa está ativa</li>',
+  '</ul>'
 ];
