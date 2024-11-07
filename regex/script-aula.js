@@ -431,6 +431,85 @@
 //   '</ul>'
 // ];
 
+//Regexp constructor - Toda regexp é criada com o constructor RegExp() e herda as suas propriedades e métodos. Existem diferenças na sintaxe de uma Regexp criada diretamente em uma variável e de uma passada como argumento de RegExp.
+// const regexp = /\w+/gi;
+
+// // Se passarmos uma string, não precisamos dos //
+// // e devemos utilizar \\ para meta characters, pois é necessário
+// // escapar a \ especial. As Flags são o segundo argumento
+// const regexpObj1 = new RegExp('\\w+', 'gi');
+// const regexpObj2 = new RegExp(/\w+/, 'gi');
+
+// 'JavaScript Linguagem 101'.replace(regexpObj1, 'X');
+// // X X X
+
+// // Exemplo complexo:
+// const regexpTELEFONE1 = /(?:\+?55\s?)?(?:\(?\d{2}\)?[-\s]?)?\d{4,5}[-\s]?\d{4}/g;
+// const regexpTELEFONE2 = new RegExp('(?:\\+?55\\s?)?(?:\\(?\\d{2}\\)?[-\\s]?)?\\d{4,5}[-\\s]?\\d{4}', 'g');
+
+//Propriedades - Uma regexp possui propriedades com informações sobre as flags e o conteúdo da mesma.
+// const regexp = /\w+/gi;
+
+// regexp.flags; // 'gi'
+// regexp.global; // true
+// regexp.ignoreCase; // true
+// regexp.multiline; // false
+// regexp.source; // '\w+'
+
+//Regexp Test() - O método test() verifica se existe ou não uma ocorrência da busca. Se existir ele retorna true. A próxima vez que chamarmos o mesmo, ele irá começar do index em que parou no último true.
+// const regexp = /Java/g;
+// const frase = 'JavaScript e Java';
+
+// regexp.lastIndex; // 0
+// regexp.test(frase); // true
+// regexp.lastIndex; // 4
+// regexp.test(frase); // true
+// regexp.lastIndex; // 17
+// regexp.test(frase); // false
+// regexp.lastIndex; // 0
+// regexp.test(frase); // true (Reinicia
+// regexp.lastIndex;  // 4
+
+//Test em loop - Podemos utilizar o while loop, para mostrar enquanto a condição for verdadeira. Assim retornamos a quantidade de match's.
+// const regexp = /Script/g;
+// const frase = 'JavaScript, TypeScript e CoffeeScript';
+
+// let i = 1;
+// while(regexp.test(frase)) {
+//   console.log(i++, regexp.lastIndex);
+// }
+// // 1 10
+// // 2 22
+// // 3 37
+
+//Regexp exec() - O exec() diferente do test(), irá retornar uma Array com mais informações do que apenas um valor booleano.
+// const regexp = /\w{2,}/g;
+// const frase = 'JavaScript, TypeScript e CoffeeScript';
+
+// regexp.exec(frase);
+// // ["JavaScript", index: 0, input: "JavaScript,
+// // TypeScript e CoffeeScript", groups: undefined] 
+// regexp.exec(frase);
+// // ["TypeScript", index: 12, input: "JavaScript,
+// // TypeScript e CoffeeScript", groups: undefined] 
+// regexp.exec(frase);
+// // ["CoffeeScript", index: 25, input: "JavaScript,
+// // TypeScript e CoffeeScript", groups: undefined] 
+// regexp.exec(frase);
+// // null
+// regexp.exec(frase); // Reinicia
+// // ["JavaScript", index: 0, input: "JavaScript,
+// // TypeScript e CoffeeScript", groups: undefined] 
+
+//Loop com exec() - Podemos fazer um loop com exec e parar o mesmo no momento que encontre o null.
+// const regexp = /\w{2,}/g;
+// const frase = 'JavaScript, TypeScript e CoffeeScript';
+// let regexpResult;
+
+// while((regexpResult = regexp.exec(frase)) !== null) {
+//   console.log(regexpResult[0]);
+// }
+
 //Testes
 const frase = 'PHP'; //sentido literal - p seguido de h e p
 const novaFrase = frase.replace(/P/, 'J')
@@ -629,3 +708,54 @@ const tagss = [
   '<li>Essa está ativa</li>',
   '</ul>'
 ];
+
+const regexp35 = /\w+/gi;
+const regexp36 = new RegExp('\\w', 'gi');
+const frase4 = 'Java ou JavaScript';
+console.log(frase4.replace(regexp36, 'x'));
+
+//props da regexp
+console.log(regexp35.source);
+console.log(regexp35.global);
+console.log(regexp35.ignoreCase);
+
+//test()
+const regexp37 = /Java/g;
+const frase5 = 'JavaScript e Java';
+regexp37.lastIndex; // 0
+regexp37.test(frase5); // true
+regexp37.lastIndex; // 4
+regexp37.test(frase5); // true
+regexp37.lastIndex; // 17
+regexp37.test(frase5); // false
+regexp37.lastIndex; // 0
+regexp37.test(frase5); // true (Reinicia
+regexp37.lastIndex;  // 4
+
+//test em loop
+const regexp38 = /Script/g;
+const frase6 = 'JavaScript, TypeScript e CoffeeScript';
+let i = 1;
+while(regexp38.test(frase6)) {
+  console.log(i++, regexp38.lastIndex);
+}
+// 1 10
+// 2 22
+// 3 37
+
+//exec()
+const frase7 = 'JavaScript, TypeScript e CoffeeScript';
+const regexp39 = /\w+/g;
+console.log(regexp39.exec(frase7));
+console.log(regexp39.exec(frase7));
+console.log(regexp39.exec(frase7));
+console.log(regexp39.exec(frase7));
+
+//exec em loop
+const regexp40 = /\w{2,}/g;
+const frase8 = 'JavaScript, TypeScript e CoffeeScript';
+let regexpResult;
+
+while((regexpResult = regexp40.exec(frase8)) !== null) {
+  console.log(regexpResult[0]);
+}
